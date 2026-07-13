@@ -14,7 +14,7 @@ A full-stack mobile application tailored for daily commuters and transit operato
 *   **Backend:** Node.js,
 *   **Database:** MySQL
 *   **Real-time & Maps:** Socket.io, Google Maps API
-*   **Security:** JWT, Bcrypt,Firebase
+*   **Security:** JWT, Bcrypt,Firebase(Notifications)
 
 ## 🚀 Getting Started
 
