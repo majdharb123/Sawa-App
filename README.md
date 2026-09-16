@@ -58,7 +58,7 @@ A full-stack mobile application tailored for daily commuters and transit operato
 **Majd Harb**
 * **LinkedIn:** [https://www.linkedin.com/in/majd-harb-cs/]
 * **GitHub:** [https://github.com/majdharb123]
-* **Email:** [majdhaeb37@gmail.com]
+* **Email:** [majdharb37@gmail.com]
 
 **Nour Bathiche**
 * **Co-Author & Project Partner**
