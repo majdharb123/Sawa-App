@@ -7,7 +7,7 @@ A full-stack mobile application tailored for daily commuters and transit operato
 *   **Live GPS Tracking:** Real-time bus tracking, interactive mapping, and live updates using Google Maps API and Socket.io.
 *   **Secure Authentication:** User login and registration protected by JWT and Bcrypt password hashing.
 *   **Relational Database:** Efficient data storage, booking management, and retrieval using MySQL.
-*   **RESTful API:** Scalable backend architecture built on Node.js and Express to handle mobile client requests.
+*   **RESTful API:** Scalable backend architecture built on Node.js to handle mobile client requests.
 
 ## 🛠️ Tech Stack
 *   **Frontend:** Flutter, Dart
