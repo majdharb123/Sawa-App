@@ -66,6 +66,9 @@ app.use("/api/zamil/chat", ChatZamil);
 const reportsRoute = require("./Routes/ReportsRoute");
 app.use("/api/reports", reportsRoute);
 
+const geocodingRoute = require("./Routes/GeocodingRoute");
+app.use("/api/geocode", geocodingRoute);
+
 const HistoryCaptain = require("./captain/HistoryCaptain");
 app.use("/api/captain/history", HistoryCaptain);
 

@@ -522,9 +522,9 @@ class _MakingTripCaptainState extends State<MakingTripCaptain> {
           ? (widget.tripData?['time'] ?? "08:00 AM")
           : selectedTime!.format(context);
 
-      String googleApiKey = "AIzaSyAyw0YsaMPZnp1-PJs7HqWcac-gofup67Y";
       String startQuery =
           "${meetingPointController.text}, ${fromController.text}, Lebanon";
+
       String destQuery =
           "${dropoffPointController.text}, ${toController.text}, Lebanon";
 
@@ -532,10 +532,12 @@ class _MakingTripCaptainState extends State<MakingTripCaptain> {
 
       var startResponse = await http.get(
         Uri.parse(
-          "https://maps.googleapis.com/maps/api/geocode/json?address=${Uri.encodeComponent(startQuery)}&key=$googleApiKey",
+          "$baseUrl/api/geocode?address=${Uri.encodeComponent(startQuery)}",
         ),
       );
+
       var startData = jsonDecode(startResponse.body);
+
       if (startData['status'] == 'OK' && startData['results'].isNotEmpty) {
         startLat = startData['results'][0]['geometry']['location']['lat'];
         startLng = startData['results'][0]['geometry']['location']['lng'];
@@ -543,16 +545,21 @@ class _MakingTripCaptainState extends State<MakingTripCaptain> {
 
       var destResponse = await http.get(
         Uri.parse(
-          "https://maps.googleapis.com/maps/api/geocode/json?address=${Uri.encodeComponent(destQuery)}&key=$googleApiKey",
+          "$baseUrl/api/geocode?address=${Uri.encodeComponent(destQuery)}",
         ),
       );
+
       var destData = jsonDecode(destResponse.body);
+
       if (destData['status'] == 'OK' && destData['results'].isNotEmpty) {
         destLat = destData['results'][0]['geometry']['location']['lat'];
         destLng = destData['results'][0]['geometry']['location']['lng'];
       }
 
-      if (startLat == null || destLat == null) {
+      if (startLat == null ||
+          startLng == null ||
+          destLat == null ||
+          destLng == null) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text(

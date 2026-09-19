@@ -146,9 +146,7 @@ class _HomeCaptainState extends State<HomeCaptain> {
       ),
     );
 
-    String googleAPiKey = "AIzaSyAyw0YsaMPZnp1-PJs7HqWcac-gofup67Y";
-    String url =
-        "https://maps.googleapis.com/maps/api/geocode/json?address=${Uri.encodeComponent(query)}&key=$googleAPiKey";
+    final url = "$baseUrl/api/geocode?address=${Uri.encodeComponent(query)}";
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -249,11 +247,17 @@ class _HomeCaptainState extends State<HomeCaptain> {
       return;
     }
 
-    String googleAPiKey = "AIzaSyAyw0YsaMPZnp1-PJs7HqWcac-gofup67Y";
+    const googleApiKey = String.fromEnvironment("GOOGLE_MAPS_API_KEY");
+
+    if (googleApiKey.isEmpty) {
+      debugPrint("Google Maps API key is not configured.");
+      return;
+    }
+
     PolylinePoints polylinePoints = PolylinePoints();
 
     PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
-      googleApiKey: googleAPiKey,
+      googleApiKey: googleApiKey,
       request: PolylineRequest(
         origin: PointLatLng(startLat, startLng),
         destination: PointLatLng(destLat, destLng),
